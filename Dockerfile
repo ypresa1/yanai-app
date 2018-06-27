@@ -2,7 +2,7 @@
 # Using RHEL 7 base image and Apache Web server
 
 # Pull the rhel image from the local repository
-FROM registry.access.redhat.com/rhel7
+FROM registry.access.redhat.com/rhel7-ppc64le
 
 MAINTAINER <yanai@example.com>
 
