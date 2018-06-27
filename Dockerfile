@@ -18,20 +18,20 @@ LABEL name="yanai-app" \
 ### Atomic Help File - Write in Markdown, it will be converted to man format at build time.
 ### https://github.com/projectatomic/container-best-practices/blob/master/creating/help.adoc
 
-COPY help.md /tmp/help.md
+#COPY help.md /tmp/help.md
 COPY licenses /licenses
 
 
 ### Add necessary Red Hat repos here
 RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms \
 ### Add your package needs here
-    INSTALL_PKGS="golang-github-cpuguy83-go-md2man httpd" && \
+    INSTALL_PKGS="httpd" && \
     yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
       --security --sec-severity=Important --sec-severity=Critical && \
     yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs ${INSTALL_PKGS} && \
 
 ### help file markdown to man conversion
-   go-md2man -in /tmp/help.md -out /help.1 && \
+ #  go-md2man -in /tmp/help.md -out /help.1 && \
 
      yum clean all
 
@@ -40,10 +40,10 @@ RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms \
 
 #RUN yum install httpd -y
 
-RUN echo "This container image was build on:" > /var/www/html/index.html
-RUN date >> /var/www/html/index.html
-EXPOSE 8080
+#RUN echo "This container image was build on:" > /var/www/html/index.html
+#RUN date >> /var/www/html/index.html
+#EXPOSE 8080
 
 #Start the service
-CMD ["-D", "FOREGROUND"]
-ENTRYPOINT ["/usr/sbin/httpd"]
+#CMD ["-D", "FOREGROUND"]
+#ENTRYPOINT ["/usr/sbin/httpd"]
