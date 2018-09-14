@@ -21,7 +21,7 @@ LABEL name="Artifactory Pro" \
 
 ### Atomic Help File - help.1 already in Markdown and provided with Doockerfile by RH as a simple test
 ### https://github.com/projectatomic/container-best-practices/blob/master/creating/help.adoc
-COPY help.1 /help.1
+#COPY help.1 /help.1
 
 ### add licenses to this directory
 ### put all end user license agreements in this directory
@@ -29,25 +29,25 @@ COPY licenses /licenses
 
 # We download all the usual JDBC drivers available so we can
 # configure them at runtime
-RUN curl -L -o /opt/jfrog/artifactory/tomcat/lib/postgresql-42.0.0.jre6.jar https://jdbc.postgresql.org/download/postgresql-42.0.0.jre6.jar
+#RUN curl -L -o /opt/jfrog/artifactory/tomcat/lib/postgresql-42.0.0.jre6.jar https://jdbc.postgresql.org/download/postgresql-42.0.0.jre6.jar
 
-ADD artifactory.config.xml /tmp/artifactory.config.xml
+#ADD artifactory.config.xml /tmp/artifactory.config.xml
 
 # Copy the run script
-COPY run.sh /runArtifactory.sh
-COPY entrypoint-artifactory.sh /
-RUN chmod +x /entrypoint-artifactory.sh
+#COPY run.sh /runArtifactory.sh
+#COPY entrypoint-artifactory.sh /
+#RUN chmod +x /entrypoint-artifactory.sh
 
 #dynamic configuration
-COPY server.xml /opt/jfrog/artifactory/tomcat/conf/server.xml
-COPY nginx.ftl /tmp/nginx.ftl
-COPY internalUser.groovy /tmp/internalUser.groovy
-COPY binarystore.xml /tmp/binarystore.xml
+#COPY server.xml /opt/jfrog/artifactory/tomcat/conf/server.xml
+#COPY nginx.ftl /tmp/nginx.ftl
+#COPY internalUser.groovy /tmp/internalUser.groovy
+#COPY binarystore.xml /tmp/binarystore.xml
 
 # Pre-Populated keys
-ADD HA/keys/private.key /var/opt/jfrog/artifactory/access/etc/keys/private.key
-ADD HA/keys/root.crt /var/opt/jfrog/artifactory/access/etc/keys/root.crt
-ADD HA/communication.key $ARTIFACTORY_DATA/communication.key
+#ADD HA/keys/private.key /var/opt/jfrog/artifactory/access/etc/keys/private.key
+#ADD HA/keys/root.crt /var/opt/jfrog/artifactory/access/etc/keys/root.crt
+#ADD HA/communication.key $ARTIFACTORY_DATA/communication.key
 
 EXPOSE 8081 10042 5001
 
