@@ -16,3 +16,5 @@ LABEL name="datadog/docker-dd-agent:latest-rhel" \
            ${IMAGE}' \
       io.k8s.description="Datadog Agent provides real-time performance tracking and visualization of your Kubernetes clusters, containers, operating system and application metrics." \
       io.k8s.display-name="Datadog Agent"
+
+COPY licenses /licenses
