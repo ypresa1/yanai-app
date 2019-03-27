@@ -1,3 +1,4 @@
+FROM registry.access.redhat.com/ubi7-dev-preview/ubi-minimal  
 MAINTAINER Datadog <package@datadoghq.com>
 
 LABEL name="datadog/docker-dd-agent:latest-rhel" \
