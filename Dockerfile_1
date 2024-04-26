@@ -19,7 +19,7 @@ LABEL name="yanai-app" \
 ### https://github.com/projectatomic/container-best-practices/blob/master/creating/help.adoc
 
 #COPY help.md /tmp/help.md
-COPY licenses /licenses
+#COPY licenses /licenses
 
 
 ### Add necessary Red Hat repos here
